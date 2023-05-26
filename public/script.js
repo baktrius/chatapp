@@ -1,5 +1,5 @@
 const ws = new WebSocket(`ws://${window.document.location.host}`);
-// ws.binaryType = "blob";
+ws.binaryType = "blob";
 // Log socket opening and closing
 ws.addEventListener("open", event => {
     console.log("Websocket connection opened");

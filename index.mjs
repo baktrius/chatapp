@@ -16,7 +16,7 @@ wss.on('connection', (client) => {
     console.log('Client connected !')
     client.on('message', (msg) => {    // (3)
         console.log(`Message:${msg}`);
-        broadcast(toString(msg))
+        broadcast(msg)
     })
 })
 function broadcast(msg) {       // (4)
