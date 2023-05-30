@@ -45,13 +45,16 @@ app.post('/logout', (req, res) => {
 // serve static folder
 app.use(express.static('public'))
 // server images uploaded by users
-app.use('/uploads', express.static('uploads'))
+// MAYBE SOMETHING HERE ?? (2)
 
 // handle image upload
 app.post('/img', upload.single('img'), function (req, res, next) {
-    res.json({ success: true })
-    broadcast(JSON.stringify({ img: req.file.path }))
-    next()
+    // Use of upload.single middleware saves uploaded
+    // files to /uploads directory and enrich
+    // req object with additional info about them.
+    // More info:
+    // https://www.npmjs.com/package/multer
+    // WRITE SOMETHING APPROPRIATE HERE (1)
 })
 
 // start http server
@@ -66,7 +69,8 @@ wss.on('connection', (client) => {
     console.log('Client connected !')
     client.on('message', (msg, isBinary) => {
         console.log(`Message:${msg}`, isBinary);
-        broadcast(JSON.stringify({ text: msg.toString() }))
+        // MAYBE SOME CHANGES HERE?? (2)
+        broadcast(msg.toString())
     })
 })
 
