@@ -11,11 +11,18 @@
 
 <body>
     <div class="container">
-        <p class="msg">Messages:</p>
+        <h2 class="msg">Messages:</h2>
         <div id="messages" class="messages"></div>
         <form id="msgForm" class="msgForm">
-            <input type="text" placeholder="Send message" class="input" id="inputBox" />
+            <input type="text" placeholder="Send message" class="input" id="inputBox" name="message" required />
             <input type="submit" class="btn" value="Send">
+        </form>
+        <form action="/img" method="post" enctype="multipart/form-data" id="imgForm" class="msgForm">
+            <input type="file" name="img" class="input" accept="image/*" required />
+            <input type="submit" value="Upload" class="btn" />
+        </form>
+        <form action="/logout" method="post" class="msgForm">
+            <input type="submit" value="Logout" class="btn">
         </form>
     </div>
     <script src="script.js"></script>
